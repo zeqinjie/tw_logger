@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class TWLoggerConfigure {
   // Singleton
@@ -17,6 +18,8 @@ class TWLoggerConfigure {
   /// Whether to update cache database
   bool isUpdateDatabase = false;
 
+  Color themeColor = Colors.deepPurple;
+
   bool get open {
     return isEnabled && !kReleaseMode;
   }
@@ -27,6 +30,7 @@ class TWLoggerOverlayConfigure {
   final double bottom;
   final double right;
   final bool draggable;
+
   TWLoggerOverlayConfigure.optional({
     this.bottom = _defaultPadding,
     this.right = _defaultPadding,

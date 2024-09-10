@@ -4,6 +4,7 @@ import 'package:tw_logger/src/db/table/tw_network.dart';
 import 'package:tw_logger/src/helper/tw_label_helper.dart';
 import 'package:tw_logger/src/helper/tw_loger_helper.dart';
 import 'package:tw_logger/src/helper/tw_network_helper.dart';
+import 'package:tw_logger/src/tw_logger_configure.dart';
 import 'package:tw_logger/src/ui/tw_search_base.dart';
 import 'package:grouped_list/grouped_list.dart' as grouped_list;
 
@@ -198,6 +199,8 @@ class TWNetworkDetail extends StatefulWidget {
 
 class _TWNetworkDetailState extends State<TWNetworkDetail> {
   TWNetwork get element => widget.element;
+
+  Color get bgColor => TWLoggerConfigure().themeColor;
   @override
   Widget build(BuildContext context) {
     return buildBody();
@@ -222,6 +225,9 @@ class _TWNetworkDetailState extends State<TWNetworkDetail> {
           child: Column(
             children: [
               TabBar(
+                labelColor: bgColor,
+                unselectedLabelColor: Colors.grey,
+                indicatorColor: bgColor,
                 tabs: [
                   const Tab(text: 'Request'),
                   const Tab(text: 'Response'),

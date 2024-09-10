@@ -58,7 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    setUp();
+    setConfigure();
+    setOverlay();
     setLoggerFilter();
   }
 
@@ -143,7 +144,11 @@ class _MyHomePageState extends State<MyHomePage> {
     };
   }
 
-  void setUp() {
+  void setConfigure() {
+    TWLoggerConfigure().themeColor = Colors.green;
+  }
+
+  void setOverlay() {
     if (TWLoggerConfigure().open) {
       overlayEntry = TWLoggerOverlay.attachTo(context);
     } else {
@@ -155,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void switchOpenChanged(bool value) {
     setState(() {
       TWLoggerConfigure().isEnabled = value;
-      setUp();
+      setOverlay();
     });
   }
 

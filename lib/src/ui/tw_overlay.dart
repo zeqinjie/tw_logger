@@ -119,11 +119,9 @@ class _TWLoggerOverlayState extends State<TWLoggerOverlay> {
 }
 
 class TWLoggerButton extends StatefulWidget {
-  final Color color;
 
   const TWLoggerButton({
     super.key,
-    this.color = Colors.deepPurple,
   });
 
   @override
@@ -138,6 +136,7 @@ class TWLoggerButtonState extends State<TWLoggerButton> {
     return SpeedDial(
       overlayColor: Colors.black,
       overlayOpacity: 0.5,
+      backgroundColor: TWLoggerConfigure().themeColor,
       icon: Icons.rocket,
       elevation: 4.0,
       buttonSize: const Size(44, 44),

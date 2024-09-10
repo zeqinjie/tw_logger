@@ -279,7 +279,7 @@ abstract class TWSearchBaseState<T> extends State<TWSearchBase<T>> {
   }
 
   Color get bgColor {
-    final bgColor = Theme.of(context).colorScheme.inversePrimary;
+    final bgColor = TWLoggerConfigure().themeColor;
     return bgColor;
   }
 
