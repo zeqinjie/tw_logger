@@ -209,7 +209,12 @@ class _TWNetworkDetailState extends State<TWNetworkDetail> {
   Widget buildBody() {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Network Detail'),
+        title: const Text(
+          'Network Detail',
+          style: TextStyle(color: Colors.black),
+        ),
+        iconTheme: const IconThemeData(color: Colors.black),
+        centerTitle: true,
         backgroundColor: widget.bgColor,
       ),
       backgroundColor: widget.bgColor,

@@ -119,7 +119,6 @@ class _TWLoggerOverlayState extends State<TWLoggerOverlay> {
 }
 
 class TWLoggerButton extends StatefulWidget {
-
   const TWLoggerButton({
     super.key,
   });
@@ -163,6 +162,14 @@ class TWLoggerButtonState extends State<TWLoggerButton> {
           backgroundColor: Colors.purple[300],
           foregroundColor: Colors.white,
           onTap: () => handleOnPressed(const TWNetworkSearch()),
+        ),
+        SpeedDialChild(
+          child: const Icon(Icons.close),
+          backgroundColor: Colors.grey,
+          foregroundColor: Colors.white,
+          onTap: () => setState(() {
+            visible = false;
+          }),
         ),
       ],
     );

@@ -5,3 +5,7 @@
 ## 0.0.2
 
 * update configure theme color
+
+## 0.0.3
+
+* add hide button

@@ -58,7 +58,11 @@ abstract class TWSearchBaseState<T> extends State<TWSearchBase<T>> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: bgColor,
-            title: Text(fetchTitle),
+            title: Text(
+              fetchTitle,
+              style: const TextStyle(color: Colors.black),
+            ),
+            iconTheme: const IconThemeData(color: Colors.black),
             centerTitle: true,
             actions: [
               IconButton(
@@ -66,13 +70,17 @@ abstract class TWSearchBaseState<T> extends State<TWSearchBase<T>> {
                   await deleteAllItems();
                   fetchCache();
                 },
-                icon: const Icon(Icons.delete),
+                icon: const Icon(
+                  Icons.delete,
+                ),
               ),
               IconButton(
                 onPressed: () {
                   fetchCache();
                 },
-                icon: const Icon(Icons.refresh),
+                icon: const Icon(
+                  Icons.refresh,
+                ),
               ),
             ],
           ),

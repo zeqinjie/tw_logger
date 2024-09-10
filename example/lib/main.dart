@@ -54,7 +54,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final dio = Dio();
-  late OverlayEntry overlayEntry;
+  late OverlayEntry? overlayEntry;
   @override
   void initState() {
     super.initState();
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.deepPurple,
         title: Text(widget.title),
       ),
       body: Center(
@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (TWLoggerConfigure().open) {
       overlayEntry = TWLoggerOverlay.attachTo(context);
     } else {
-      overlayEntry.remove();
+      overlayEntry?.remove();
     }
     TWNetworkSetting.updateInterceptor(dio);
   }
