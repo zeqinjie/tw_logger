@@ -13,3 +13,7 @@
 ## 0.0.4 
 
 * fix filter 
+
+## 0.0.5
+
+* fix date show and sort

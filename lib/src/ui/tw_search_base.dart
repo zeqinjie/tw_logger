@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:tw_logger/src/db/table/tw_label.dart';
+import 'package:tw_logger/src/helper/tw_loger_helper.dart';
 import 'package:tw_logger/tw_logger.dart';
 
 abstract class TWSearchBase<T> extends StatefulWidget {
@@ -292,11 +293,14 @@ abstract class TWSearchBaseState<T> extends State<TWSearchBase<T>> {
   }
 
   String fetchDate(DateTime date) {
-    return '${date.year}-${date.month}-${date.day}';
+    return TWLoggerHelper.formatter(dateTime: date);
   }
 
   String fetchTime(DateTime date) {
-    return '${date.hour}:${date.minute}:${date.second}';
+    return TWLoggerHelper.formatter(
+      dateTime: date,
+      format: 'HH:mm:ss',
+    );
   }
 
   String get fetchTitle;
