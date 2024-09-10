@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
       stackTrace,
       time,
     ) {
-      return message != 'filter log';
+      return message == 'filter log';
     };
   }
 

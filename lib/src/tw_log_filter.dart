@@ -18,7 +18,7 @@ class TWLogFilter extends LogFilter {
       return false;
     }
     if (filterHandler != null) {
-      return filterHandler!(
+      return !filterHandler!(
         TWLogLevel.fromLevel(event.level),
         event.message,
         event.error,
