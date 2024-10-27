@@ -17,3 +17,7 @@
 ## 0.0.5
 
 * fix date show and sort
+
+## 0.0.6
+
+* support filter log line

@@ -55,6 +55,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final dio = Dio();
   late OverlayEntry? overlayEntry;
+
+  /// filter line
+  static String filterLine =
+      '│ #0   TWLogger.log (package:tw_logger/src/tw_logger.dart:81:34)';
   @override
   void initState() {
     super.initState();
@@ -146,6 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void setConfigure() {
     TWLoggerConfigure().themeColor = Colors.green;
+    TWLoggerConfigure().filterLogLines = [filterLine];
   }
 
   void setOverlay() {

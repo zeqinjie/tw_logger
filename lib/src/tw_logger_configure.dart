@@ -20,6 +20,9 @@ class TWLoggerConfigure {
 
   Color themeColor = Colors.deepPurple;
 
+  /// filter log lines
+  List filterLogLines = <String>[];
+
   bool get open {
     return isEnabled && !kReleaseMode;
   }
