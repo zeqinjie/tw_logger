@@ -6,13 +6,17 @@ class TWConsoleOutput extends LogOutput {
   @override
   void output(OutputEvent event) {
     final filterLogLines = TWLoggerConfigure().filterLogLines;
-    for (var line in event.lines) {
-      if (filterLogLines.contains(line)) {
+
+    final filterSet = filterLogLines.toSet();
+
+    for (final line in event.lines) {
+      if (filterSet.any((filter) => line.contains(filter))) {
         continue;
       }
       // ignore: avoid_print
       print(line);
     }
+
     TWRegularHelper.handleLogCache(event);
   }
 }

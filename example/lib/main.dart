@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   /// filter line
   static String filterLine =
-      '│ #0   TWLogger.log (package:tw_logger/src/tw_logger.dart:81:34)';
+      'filter line';
   @override
   void initState() {
     super.initState();
@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void setConfigure() {
     TWLoggerConfigure().themeColor = Colors.green;
-    TWLoggerConfigure().filterLogLines = [filterLine];
+    TWLoggerConfigure().filterLogLines.add(filterLine);
   }
 
   void setOverlay() {

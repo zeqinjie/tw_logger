@@ -20,4 +20,8 @@
 
 ## 0.0.6
 
-* support filter log line
+* support filter log lines
+
+## 0.0.7
+
+* fix filter log lines
