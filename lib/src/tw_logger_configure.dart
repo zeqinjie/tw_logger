@@ -21,7 +21,9 @@ class TWLoggerConfigure {
   Color themeColor = Colors.deepPurple;
 
   /// filter log lines
-  List<String> filterLogLines = <String>['#0   TWLogger.log (package:tw_logger/src/tw_logger.dart:81:34)'];
+  List<String> filterLogLines = <String>[
+    '#0   TWLogger.log (package:tw_logger/src/tw_logger.dart:81:34)'
+  ];
 
   bool get open {
     return isEnabled && !kReleaseMode;
