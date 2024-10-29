@@ -25,3 +25,7 @@
 ## 0.0.7
 
 * fix filter log lines
+
+## 0.0.8 
+
+* filter string type
