@@ -29,3 +29,8 @@
 ## 0.0.8 
 
 * filter string type
+
+## 0.0.9
+
+*  Whether effect by release mode
+

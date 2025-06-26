@@ -14,7 +14,7 @@ class TWLogFilter extends LogFilter {
   TWLogFilterHandler? filterHandler;
   @override
   bool shouldLog(LogEvent event) {
-    if (kReleaseMode) {
+    if (TWLoggerConfigure().effectByReleaseMode && !kReleaseMode) {
       return false;
     }
     if (filterHandler != null) {

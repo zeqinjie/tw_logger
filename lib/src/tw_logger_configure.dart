@@ -11,6 +11,9 @@ class TWLoggerConfigure {
   /// Default is true except for release mode
   bool isEnabled = true;
 
+  /// Whether effect by release mode
+  bool effectByReleaseMode = true;
+
   /// Timer to update cache database
   /// Default is 1 second
   Duration updateDuration = const Duration(seconds: 1);
@@ -26,7 +29,7 @@ class TWLoggerConfigure {
   ];
 
   bool get open {
-    return isEnabled && !kReleaseMode;
+    return isEnabled && (effectByReleaseMode && !kReleaseMode);
   }
 }
 

@@ -27,6 +27,9 @@ class TWLoggerOverlay extends StatefulWidget {
       ),
     );
     Future.delayed(Duration.zero, () {
+      if (!context.mounted) {
+        return;
+      }
       final overlay = Overlay.maybeOf(
         context,
         rootOverlay: rootOverlay,
