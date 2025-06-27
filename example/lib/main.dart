@@ -57,8 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late OverlayEntry? overlayEntry;
 
   /// filter line
-  static String filterLine =
-      'filter line';
+  static String filterLine = 'filter line';
   @override
   void initState() {
     super.initState();
