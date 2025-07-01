@@ -1,4 +1,4 @@
-以下是翻转后的版本：
+
 ## 0.0.11
 
 * fix control for open
