@@ -29,7 +29,10 @@ class TWLoggerConfigure {
   ];
 
   bool get open {
-    return isEnabled && (effectByReleaseMode && !kReleaseMode);
+    if (effectByReleaseMode) {
+      return isEnabled && !kReleaseMode;
+    }
+    return isEnabled;
   }
 }
 

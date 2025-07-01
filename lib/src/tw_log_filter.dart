@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 import 'package:tw_logger/tw_logger.dart';
 
@@ -13,7 +14,7 @@ class TWLogFilter extends LogFilter {
   TWLogFilterHandler? filterHandler;
   @override
   bool shouldLog(LogEvent event) {
-    if (!TWLoggerConfigure().open) {
+    if (kReleaseMode) {
       return false;
     }
     if (filterHandler != null) {
