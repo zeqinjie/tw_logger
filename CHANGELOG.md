@@ -1,5 +1,9 @@
 以下是翻转后的版本：
 
+## 0.0.10
+
+* fix shouldLog 
+
 ## 0.0.9
 
 * Whether effect by release mode

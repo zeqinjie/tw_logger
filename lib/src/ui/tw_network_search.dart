@@ -269,7 +269,7 @@ class _TWNetworkDetailState extends State<TWNetworkDetail> {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Divider(
-        color: Colors.black.withOpacity(0.1),
+        color: Colors.black.withValues(alpha: 0.1),
         height: .5,
       ),
     );
