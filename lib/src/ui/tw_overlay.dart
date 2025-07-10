@@ -49,17 +49,20 @@ class TWLoggerOverlay extends StatefulWidget {
 }
 
 class _TWLoggerOverlayState extends State<TWLoggerOverlay> {
-  static const Size buttonSize = Size(57, 57);
-
   late double bottom = widget.configure.bottom;
   late double right = widget.configure.right;
+  late Size buttonSize = widget.configure.buttonSize;
 
   late MediaQueryData screen;
+
+  bool isOnRight = true;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     screen = MediaQuery.of(context);
+    bottom += screen.padding.bottom;
+    right += screen.padding.right;
   }
 
   Offset? lastPosition;
@@ -87,8 +90,41 @@ class _TWLoggerOverlayState extends State<TWLoggerOverlay> {
     if (right + buttonSize.width > screen.size.width) {
       right = screen.size.width - buttonSize.width;
     }
+    isOnRight = right < screen.size.width / 2;
 
     setState(() {});
+  }
+
+  /// When the pointer is lifted, reset the last position
+  onPointerUp(PointerUpEvent event) {
+    setState(() {
+      if (widget.configure.adsorption) {
+        final double screenWidth = screen.size.width;
+        final double buttonWidth = buttonSize.width;
+        if (isOnRight) {
+          right = widget.configure.right + screen.padding.right;
+        } else {
+          right = screenWidth -
+              buttonWidth -
+              (widget.configure.right + screen.padding.left);
+        }
+      }
+      if (bottom < widget.configure.bottom + screen.padding.bottom) {
+        bottom = widget.configure.bottom + screen.padding.bottom;
+      }
+      if (bottom + buttonSize.height >
+          screen.size.height - screen.padding.top) {
+        bottom = screen.size.height - screen.padding.top - buttonSize.height;
+      }
+      lastPosition = null;
+    });
+  }
+
+  /// When the pointer is pressed, set the last position to the current position
+  onPointerDown(PointerDownEvent event) {
+    setState(() {
+      lastPosition = event.localPosition;
+    });
   }
 
   @override
@@ -100,13 +136,15 @@ class _TWLoggerOverlayState extends State<TWLoggerOverlay> {
         bottom: bottom,
         child: Listener(
           onPointerMove: (event) => onPanUpdate(event.localPosition),
-          onPointerDown: (event) =>
-              setState(() => lastPosition = event.localPosition),
-          onPointerUp: (event) => setState(() => lastPosition = null),
+          onPointerDown: onPointerDown,
+          onPointerUp: onPointerUp,
           child: Material(
             elevation: lastPosition == null ? 0 : 30,
             borderRadius: BorderRadius.all(Radius.circular(buttonSize.width)),
-            child: const TWLoggerButton(),
+            child: TWLoggerButton(
+              isOnRight: isOnRight,
+              buttonSize: buttonSize,
+            ),
           ),
         ),
       );
@@ -114,7 +152,10 @@ class _TWLoggerOverlayState extends State<TWLoggerOverlay> {
       child = Positioned(
         right: widget.configure.right + screen.padding.right,
         bottom: widget.configure.bottom + screen.padding.bottom,
-        child: const TWLoggerButton(),
+        child: TWLoggerButton(
+          isOnRight: isOnRight,
+          buttonSize: buttonSize,
+        ),
       );
     }
     return child;
@@ -122,8 +163,12 @@ class _TWLoggerOverlayState extends State<TWLoggerOverlay> {
 }
 
 class TWLoggerButton extends StatefulWidget {
+  final bool isOnRight;
+  final Size buttonSize;
   const TWLoggerButton({
     super.key,
+    required this.isOnRight,
+    required this.buttonSize,
   });
 
   @override
@@ -141,12 +186,14 @@ class TWLoggerButtonState extends State<TWLoggerButton> {
       backgroundColor: TWLoggerConfigure().themeColor,
       icon: Icons.rocket,
       elevation: 4.0,
-      buttonSize: const Size(44, 44),
-      childrenButtonSize: const Size(44, 44),
+      buttonSize: widget.buttonSize,
+      childrenButtonSize: widget.buttonSize,
       activeIcon: Icons.rocket_launch,
       spaceBetweenChildren: 4.0,
       spacing: 4.0,
       visible: visible,
+      direction:
+          widget.isOnRight ? SpeedDialDirection.left : SpeedDialDirection.right,
       children: [
         SpeedDialChild(
           child: const Icon(Icons.insert_drive_file),

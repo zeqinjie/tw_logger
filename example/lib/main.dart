@@ -154,7 +154,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void setOverlay() {
     if (TWLoggerConfigure().open) {
-      overlayEntry = TWLoggerOverlay.attachTo(context);
+      overlayEntry = TWLoggerOverlay.attachTo(
+        context,
+        configure: TWLoggerOverlayConfigure.optional(
+          draggable: true,
+          adsorption: true,
+        ),
+      );
     } else {
       overlayEntry?.remove();
     }

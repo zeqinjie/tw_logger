@@ -1,6 +1,6 @@
 name: tw_logger
 description: 'A Flutter package for logging with database support, which can be used to log network, errors, exceptions, and debug messages.'
-version: 0.0.11
+version: 1.0.0
 homepage: https://github.com/zeqinjie/tw_logger
 
 environment:
@@ -15,7 +15,6 @@ dependencies:
   flutter_keyboard_visibility: ^6.0.0
   dio: ^5.7.0
   flutter_speed_dial: ^7.0.0
-  sqflite: ^2.3.3+1
   intl: ^0.19.0
 
 dev_dependencies:

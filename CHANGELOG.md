@@ -1,4 +1,8 @@
 
+## 1.0.0
+
+* feat support adsorption property and show direction left/right 
+
 ## 0.0.11
 
 * fix control for open
