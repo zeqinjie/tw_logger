@@ -48,7 +48,7 @@ class TWLoggerOverlayConfigure {
     this.bottom = _defaultPadding,
     this.right = _defaultPadding,
     this.draggable = true,
-    this.adsorption = false,
+    this.adsorption = true,
     this.buttonSize = const Size(44, 44),
   });
 }
