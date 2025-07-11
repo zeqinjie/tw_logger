@@ -19,6 +19,8 @@ abstract class TWSearchBaseState<T> extends State<TWSearchBase<T>> {
   bool isLoading = false;
   List<String> labels = [];
   String get searchText => searchController.text;
+  int page = 1;
+  int pageSize = 20;
 
   @override
   void initState() {

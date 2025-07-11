@@ -18,6 +18,9 @@ abstract class TWCrashDao {
   @Query('DELETE FROM TWCrash WHERE id = :id')
   Future<void> deleteItemById(int id);
 
+  @Query('SELECT * FROM TWCrash LIMIT :limit OFFSET :offset')
+  Future<List<TWCrash>> findItemsByPagination(int limit, int offset);
+
   @insert
   Future<void> insertItem(TWCrash item);
 

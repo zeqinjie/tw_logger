@@ -18,6 +18,9 @@ abstract class TWRegularDao {
   @Query('DELETE FROM TWRegular WHERE id = :id')
   Future<void> deleteItemById(int id);
 
+  @Query('SELECT * FROM TWRegular LIMIT :limit OFFSET :offset')
+  Future<List<TWRegular>> findItemsByPagination(int limit, int offset);
+
   @insert
   Future<void> insertItem(TWRegular item);
 

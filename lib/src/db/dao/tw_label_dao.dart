@@ -24,6 +24,9 @@ abstract class TWLabelDao {
   @Query('DELETE FROM TWLabel WHERE id = :id')
   Future<void> deleteItemById(int id);
 
+  @Query('SELECT * FROM TWLabel LIMIT :limit OFFSET :offset')
+  Future<List<TWLabel>> findItemsByPagination(int limit, int offset);
+
   @Query('DELETE FROM TWLabel WHERE type = :type AND title = :title')
   Future<void> deleteItemByTypeAndTitle(String type, String title);
 

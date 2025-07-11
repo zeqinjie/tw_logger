@@ -18,6 +18,9 @@ abstract class TWNetworkDao {
   @Query('DELETE FROM TWNetwork WHERE id = :id')
   Future<void> deleteItemById(int id);
 
+  @Query('SELECT * FROM TWNetwork LIMIT :limit OFFSET :offset')
+  Future<List<TWNetwork>> findItemsByPagination(int limit, int offset);
+
   @insert
   Future<void> insertItem(TWNetwork item);
 

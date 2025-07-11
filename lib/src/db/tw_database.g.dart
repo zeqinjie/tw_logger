@@ -238,6 +238,21 @@ class _$TWRegularDao extends TWRegularDao {
   }
 
   @override
+  Future<List<TWRegular>> findItemsByPagination(
+    int limit,
+    int offset,
+  ) async {
+    return _queryAdapter.queryList('SELECT * FROM TWRegular LIMIT ?1 OFFSET ?2',
+        mapper: (Map<String, Object?> row) => TWRegular(
+            row['id'] as int?,
+            _dateTimeConverter.decode(row['time'] as int),
+            row['message'] as String?,
+            row['level'] as String?,
+            row['stacktrace'] as String?),
+        arguments: [limit, offset]);
+  }
+
+  @override
   Future<void> insertItem(TWRegular item) async {
     await _tWRegularInsertionAdapter.insert(item, OnConflictStrategy.abort);
   }
@@ -361,6 +376,20 @@ class _$TWCrashDao extends TWCrashDao {
   Future<void> deleteItemById(int id) async {
     await _queryAdapter
         .queryNoReturn('DELETE FROM TWCrash WHERE id = ?1', arguments: [id]);
+  }
+
+  @override
+  Future<List<TWCrash>> findItemsByPagination(
+    int limit,
+    int offset,
+  ) async {
+    return _queryAdapter.queryList('SELECT * FROM TWCrash LIMIT ?1 OFFSET ?2',
+        mapper: (Map<String, Object?> row) => TWCrash(
+            row['id'] as int?,
+            _dateTimeConverter.decode(row['time'] as int),
+            row['stacktrace'] as String?,
+            row['error'] as String?),
+        arguments: [limit, offset]);
   }
 
   @override
@@ -537,6 +566,28 @@ class _$TWNetworkDao extends TWNetworkDao {
   }
 
   @override
+  Future<List<TWNetwork>> findItemsByPagination(
+    int limit,
+    int offset,
+  ) async {
+    return _queryAdapter.queryList('SELECT * FROM TWNetwork LIMIT ?1 OFFSET ?2',
+        mapper: (Map<String, Object?> row) => TWNetwork(
+            row['id'] as int?,
+            _dateTimeConverter.decode(row['requestTime'] as int),
+            row['requestUri'] as String?,
+            row['requestMethod'] as String?,
+            row['requestHeaders'] as String?,
+            row['requestData'] as String?,
+            row['responseHeaders'] as String?,
+            row['responseStatusCode'] as int?,
+            row['responseStatusMessage'] as String?,
+            row['responseData'] as String?,
+            _dateTimeConverter.decode(row['responseTime'] as int),
+            row['error'] as String?),
+        arguments: [limit, offset]);
+  }
+
+  @override
   Future<void> insertItem(TWNetwork item) async {
     await _tWNetworkInsertionAdapter.insert(item, OnConflictStrategy.abort);
   }
@@ -686,6 +737,20 @@ class _$TWLabelDao extends TWLabelDao {
   Future<void> deleteItemById(int id) async {
     await _queryAdapter
         .queryNoReturn('DELETE FROM TWLabel WHERE id = ?1', arguments: [id]);
+  }
+
+  @override
+  Future<List<TWLabel>> findItemsByPagination(
+    int limit,
+    int offset,
+  ) async {
+    return _queryAdapter.queryList('SELECT * FROM TWLabel LIMIT ?1 OFFSET ?2',
+        mapper: (Map<String, Object?> row) => TWLabel(
+            row['id'] as int?,
+            row['title'] as String?,
+            row['type'] as String?,
+            _dateTimeConverter.decode(row['time'] as int)),
+        arguments: [limit, offset]);
   }
 
   @override
